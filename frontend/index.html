@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MailForensic AI - email threat detection and digital forensics">
+  <title>MailForensic AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div>
+    <div class="brand">MAILFORENSIC <span>AI</span></div>
+    <div class="sub">AI-powered email threat detection & digital forensics</div>
+  </div>
+  <div class="status"><i></i> FORENSIC ENGINE ONLINE</div>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">SOC / DIGITAL FORENSICS</p>
+      <h1>Investigate suspicious emails.<br><span>Find the evidence.</span></h1>
+      <p class="muted">Upload an .eml file to reconstruct headers, authentication, indicators, relay path and explainable risk.</p>
+    </div>
+    <div class="case">
+      <small>CASE ENGINE</small>
+      <strong id="caseId">MF-READY</strong>
+      <span>Local evidence analysis</span>
+    </div>
+  </section>
+
+  <section class="upload card">
+    <div id="drop">
+      <div class="uploadicon">↑</div>
+      <h2>Drop an .eml file here</h2>
+      <p>or choose an email evidence file from your Mac</p>
+      <input id="file" type="file" accept=".eml,message/rfc822">
+      <div>
+        <button class="btn primary" id="choose" type="button">Choose .eml</button>
+        <button class="btn" id="sample" type="button">Load Sample</button>
+      </div>
+    </div>
+    <div id="selected" class="selected hidden"></div>
+  </section>
+
+  <div class="actions">
+    <button class="btn primary big" id="analyze" type="button">Analyze Email</button>
+    <button class="btn big" id="report" type="button">Download Forensic PDF</button>
+  </div>
+
+  <section id="dashboard" class="hidden">
+    <div class="metrics">
+      <div class="metric score">
+        <small>FORENSIC RISK</small>
+        <b id="score">--</b>
+        <span id="level">WAITING</span>
+      </div>
+      <div class="metric"><small>SPF</small><b id="spf">--</b></div>
+      <div class="metric"><small>DKIM</small><b id="dkim">--</b></div>
+      <div class="metric"><small>DMARC</small><b id="dmarc">--</b></div>
+      <div class="metric"><small>URLS</small><b id="urls">0</b></div>
+      <div class="metric"><small>PUBLIC IPS</small><b id="ips">0</b></div>
+    </div>
+
+    <article class="card">
+      <div id="mlResult"></div>
+    </article>
+
+    <div class="grid2">
+      <article class="card">
+        <div class="cardhead"><h2>Email Evidence</h2><span class="tag">PARSED</span></div>
+        <div id="email" class="details"></div>
+      </article>
+
+      <article class="card threat">
+        <div class="cardhead"><h2>Threat Classification</h2><span class="tag red" id="threatTag">--</span></div>
+        <div class="classification">
+          <div id="classLevel">--</div>
+          <p id="classText">Run analysis to classify the message.</p>
+        </div>
+        <div id="reasons"></div>
+      </article>
+    </div>
+
+    <div class="grid2">
+      <article class="card">
+        <div class="cardhead"><h2>Threat Indicators</h2><span class="tag">IOCs</span></div>
+        <div class="iocgrid">
+          <div><small>URLS</small><div id="urlList">None</div></div>
+          <div><small>IP ADDRESSES</small><div id="ipList">None</div></div>
+          <div><small>DOMAINS</small><div id="domainList">None</div></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cardhead"><h2>Authentication</h2><span class="tag">HEADER SIGNALS</span></div>
+        <div id="authExplain" class="authbox"></div>
+      </article>
+    </div>
+
+    <article class="card">
+      <div class="cardhead"><h2>SMTP Relay Path</h2><span class="tag">RECEIVED HEADERS</span></div>
+      <div id="relay" class="timeline"></div>
+    </article>
+
+    <article class="card">
+      <div class="cardhead"><h2>Threat Intelligence & Geolocation</h2><span class="tag">PUBLIC IP</span></div>
+      <div id="intel" class="intelgrid"><div class="empty">Analyze an email to query public infrastructure intelligence.</div></div>
+    </article>
+
+    <article class="card">
+      <div class="cardhead"><h2>Correlation Graph</h2><span class="tag">INVESTIGATION</span></div>
+      <div id="graph" class="graph"></div>
+    </article>
+
+    <article class="card evidence">
+      <div class="cardhead"><h2>Evidence Integrity</h2><span class="tag green">SHA-256</span></div>
+      <div class="hash" id="hash">--</div>
+      <p class="muted">The hash uniquely represents the uploaded evidence file and can be recorded in the case log.</p>
+    </article>
+  </section>
+</main>
+
+<footer>MailForensic AI v2 • Illustrative forensic analysis</footer>
+<script src="app.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.venv/
+.venv-1/
+__pycache__/
+*.py[cod]
+.env
+.DS_Store
+*.log
+dataset/
+sample_emails/
